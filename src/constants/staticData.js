@@ -1,30 +1,50 @@
 export const users = [
     {
-        id: 1,
-        name: 'John Doe'
+        id: 714717,
+        value: 'John Doe'
     },
     {
-        id: 2,
-        name: 'Alice'
+        id: 717241237,
+        value: 'Alice'
     },
     {
-        id: 3,
-        name: 'Bob'
+        id: 12323,
+        value: 'Bob'
+    },
+    {
+        id: 1242555,
+        value: 'Xandokan'
+    },
+    {
+        id: 900,
+        value: 'Blue'
+    },
+    {
+        id: 145,
+        value: 'Camel'
+    },
+    {
+        id: 27,
+        value: 'Kent'
+    },
+    {
+        id: 81,
+        value: 'Malbor'
     }
 ];
 
 export const roles = [
     {
         id: 1,
-        name: 'Admin'
+        value: 'Admin'
     },
     {
         id: 2,
-        name: 'Editor'
+        value: 'Editor'
     },
     {
         id: 3,
-        name: 'Viewer'
+        value: 'Viewer'
     }
 ];
 

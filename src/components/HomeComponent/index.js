@@ -7,7 +7,7 @@ import {
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import {UsersSelect} from './Users';
-import {ProjectsSelect} from './Projects';
+import ProjectsSelect from './Projects';
 
 import './index.css'
 
@@ -46,7 +46,7 @@ class HomePage extends Component {
     getStepContent(stepIndex) {
         switch (stepIndex) {
             case 0:
-                return <UsersSelect />;
+                return <UsersSelect userData={this.props.userData} fetchUser={this.props.fetchUser} selectedUserData={this.props.selectedUserData} />;
             case 1:
                 return <ProjectsSelect />;
             default:

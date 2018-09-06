@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import Home from '../../components/HomeComponent'
+import {
+    fetchUser,
+    selectedUserData
+} from '../../actions/Home';
 
 class HomeContainer extends Component {
     render () {
@@ -12,12 +16,21 @@ class HomeContainer extends Component {
     }
 }
 
-const mapStateToProps = () => {
-    return {}
+const mapStateToProps = (state, ownProps) => {
+    return {
+        userData: state.home.userData
+    }
 };
 
-const mapDispatchToProps = () => {
-    return {}
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        fetchUser: (userData) => {
+            dispatch(fetchUser(userData))
+        },
+        selectedUserData: (userName, index) => {
+            dispatch(selectedUserData(userName, index))
+        }
+    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer)
