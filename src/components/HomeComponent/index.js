@@ -63,6 +63,8 @@ class HomePage extends Component {
                 return (
                     <ProjectsSelect
                         wholeProjects={this.props.wholeProjects}
+                        saveProject={this.props.saveProject}
+                        removeProject={this.props.removeProject}
                     />
                 );
             default:

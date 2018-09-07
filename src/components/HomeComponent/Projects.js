@@ -4,7 +4,7 @@ import ProjectCard from './ProjectCard'
 class ProjectsSelect extends Component {
 
     render () {
-        const {wholeProjects} = this.props;
+        const {wholeProjects, saveProject, removeProject} = this.props;
 
         return (
             <div className={'project-step'}>
@@ -14,9 +14,12 @@ class ProjectsSelect extends Component {
                             <ProjectCard
                                 key={i}
                                 id={card.id}
+                                order={i}
                                 title={card.name}
                                 checked={card.checked}
                                 role={card.role}
+                                saveProject={saveProject}
+                                removeProject={removeProject}
                             />
                         )
                     }

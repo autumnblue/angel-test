@@ -1,8 +1,11 @@
 import _ from 'lodash';
 import {
     FETCH_USER_DATA,
-    SELECTED_USER_INFORMATION
+    SELECTED_USER_INFORMATION,
+    SAVE_PROJECT,
+    REMOVE_PROJECT
 } from '../../constants/actionType';
+
 import {projectArr} from '../../constants/staticData'
 
 const initialState = {
@@ -14,7 +17,7 @@ const initialState = {
         return {
             id: project.id,
             name: project.name,
-            role: 'admin',
+            role: 'viewer',
             checked: false
         }
     }) || []
@@ -32,6 +35,16 @@ const reducer = (state = initialState, action) => {
         case SELECTED_USER_INFORMATION:
             newState.selectedUserName = action.selectedUserInfo;
             newState.userId = newState.userOriginData[action.userOrder].id;
+            return newState;
+
+        case SAVE_PROJECT:
+            newState.wholeProjects[action.projectOrder].checked = true;
+            newState.wholeProjects[action.projectOrder].role = action.role;
+            return newState;
+
+        case REMOVE_PROJECT:
+            newState.wholeProjects[action.projectOrder].checked = false;
+            newState.wholeProjects[action.projectOrder].role = action.role;
             return newState;
 
         default:

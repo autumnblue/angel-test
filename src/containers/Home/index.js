@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import Home from '../../components/HomeComponent'
 import {
     fetchUser,
-    selectedUserData
+    selectedUserData,
+    saveProject,
+    removeProject
 } from '../../actions/Home';
 
 class HomeContainer extends Component {
@@ -26,10 +28,16 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         fetchUser: (userData) => {
-            dispatch(fetchUser(userData))
+            dispatch(fetchUser(userData));
         },
         selectedUserData: (userName, index) => {
-            dispatch(selectedUserData(userName, index))
+            dispatch(selectedUserData(userName, index));
+        },
+        saveProject: (role, order, id) => {
+            dispatch(saveProject(role, order, id));
+        },
+        removeProject: (role, order, id) => {
+            dispatch(removeProject(role, order, id));
         }
     }
 };

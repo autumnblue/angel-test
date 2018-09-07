@@ -3,6 +3,10 @@ import {Card, CardHeader, CardText} from 'material-ui/Card';
 import Checkbox from 'material-ui/Checkbox';
 import RoleSelect from './Role';
 
+const cardStyle = {
+    display: 'flex'
+};
+
 class ProjectCard extends Component {
     constructor (props) {
         super(props)
@@ -27,14 +31,18 @@ class ProjectCard extends Component {
     };
 
     saveClose = () => {
-        this.setState({open: false});
+        this.setState({open: false}, function () {
+            this.props.saveProject(this.state.projectRole, this.props.order, this.props.id)
+        });
     };
 
     removeClose = () => {
-        this.setState({open: false});
+        this.setState({open: false}, function () {
+            this.props.removeProject('viewer', this.props.order, this.props.id)
+        });
     };
 
-    selectRole = (role) => {
+    selectRole = (ev, role) => {
       this.setState({ projectRole: role })
     };
 
@@ -54,12 +62,14 @@ class ProjectCard extends Component {
                         title={title}
                         actAsExpander={true}
                     />
-                    <CardText>
+                    <CardText style={cardStyle}>
                         <Checkbox
                             label={checked ? 'Project was selected' : 'Select the project'}
                             checked={checked}
                         />
-                        <p>{checked && role}</p>
+                        {
+                            checked && <p>role: {role}</p>
+                        }
                     </CardText>
                 </Card>
                 <RoleSelect
