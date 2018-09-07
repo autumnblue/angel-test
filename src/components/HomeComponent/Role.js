@@ -19,16 +19,22 @@ class RoleSelect extends React.Component {
             <FlatButton
                 label="Cancel"
                 primary={true}
-                onClick={this.props.handleClose}
+                onClick={this.props.cancelClose}
             />,
             <RaisedButton
-                label="Submit"
+                label="Save"
                 primary={true}
-                onClick={this.props.handleClose}
+                onClick={this.props.saveClose}
+            />,
+            <FlatButton
+                label="Remove"
+                secondary={true}
+                disabled={!this.props.checked}
+                onClick={this.props.removeClose}
             />,
         ];
 
-        const {open} = this.props;
+        const {open, role} = this.props;
 
         return (
             <div>
@@ -39,7 +45,7 @@ class RoleSelect extends React.Component {
                     open={open}
                     onRequestClose={this.props.handleClose}
                 >
-                    <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+                    <RadioButtonGroup name="role" defaultSelected={role} onChange={this.props.selectRole}>
                         <RadioButton
                             value="admin"
                             label="Admin"

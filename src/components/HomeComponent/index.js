@@ -18,6 +18,12 @@ const contentStyle = {
     margin: '0 16px'
 };
 
+const titleStyle = {
+  display: 'flex',
+  textAlign: 'center',
+  fontSize: '30px'
+};
+
 class HomePage extends Component {
     constructor (props) {
         super(props)
@@ -46,13 +52,36 @@ class HomePage extends Component {
     getStepContent(stepIndex) {
         switch (stepIndex) {
             case 0:
-                return <UsersSelect userData={this.props.userData} fetchUser={this.props.fetchUser} selectedUserData={this.props.selectedUserData} />;
+                return (
+                    <UsersSelect
+                        userData={this.props.userData}
+                        fetchUser={this.props.fetchUser}
+                        selectedUserData={this.props.selectedUserData}
+                    />
+                );
             case 1:
-                return <ProjectsSelect />;
+                return (
+                    <ProjectsSelect
+                        wholeProjects={this.props.wholeProjects}
+                    />
+                );
             default:
                 return 'Steps were completed. Please go back';
         }
     }
+
+    stepTitle = (stepIndex) => {
+        switch (stepIndex) {
+            case 0:
+                return 'Select User';
+
+            case 1:
+                return 'Select Project';
+
+            default:
+                return ''
+        }
+    };
 
     render () {
         const {finished, stepIndex} = this.state;
@@ -82,6 +111,9 @@ class HomePage extends Component {
                         </p>
                     ) : (
                         <div>
+                            <p style={titleStyle}>
+                                {this.stepTitle(stepIndex)}
+                            </p>
                             <div>{this.getStepContent(stepIndex)}</div>
                             <div style={{marginTop: 12}}>
                                 <FlatButton

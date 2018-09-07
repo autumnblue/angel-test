@@ -1,38 +1,25 @@
 import React, { Component } from 'react'
-import {ProjectCard} from './ProjectCard'
-import RoleSelect from './Role';
-import {projects} from '../../constants/staticData'
+import ProjectCard from './ProjectCard'
 
 class ProjectsSelect extends Component {
-    constructor (props) {
-        super(props)
-
-        this.state = {
-            open: false,
-        }
-    }
-
-    handleOpen = () => {
-        this.setState({open: true});
-    };
-
-    handleClose = () => {
-        this.setState({open: false});
-    };
 
     render () {
-        const {open} = this.state;
+        const {wholeProjects} = this.props;
 
         return (
             <div className={'project-step'}>
                 <div className={'project-card-part'}>
                     {
-                        projects.map((card, i) => <ProjectCard key={i} id={card.id} title={card.name} handleOpen={this.handleOpen} />)
+                        wholeProjects.map((card, i) =>
+                            <ProjectCard
+                                key={i}
+                                id={card.id}
+                                title={card.name}
+                                checked={card.checked}
+                                role={card.role}
+                            />
+                        )
                     }
-                    <RoleSelect
-                        open={open}
-                        handleClose={this.handleClose}
-                    />
                 </div>
             </div>
         )

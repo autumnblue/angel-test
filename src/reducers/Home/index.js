@@ -3,12 +3,21 @@ import {
     FETCH_USER_DATA,
     SELECTED_USER_INFORMATION
 } from '../../constants/actionType';
+import {projectArr} from '../../constants/staticData'
 
 const initialState = {
     userOriginData: [],
     userData: [],
     userId: null,
     selectedUserName: '',
+    wholeProjects: projectArr.map(project => {
+        return {
+            id: project.id,
+            name: project.name,
+            role: 'admin',
+            checked: false
+        }
+    }) || []
 };
 
 const reducer = (state = initialState, action) => {

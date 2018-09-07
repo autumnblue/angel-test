@@ -18,7 +18,8 @@ class HomeContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        userData: state.home.userData
+        userData: state.home.userData,
+        wholeProjects: state.home.wholeProjects
     }
 };
 

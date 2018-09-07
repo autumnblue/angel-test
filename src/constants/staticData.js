@@ -48,7 +48,7 @@ export const roles = [
     }
 ];
 
-export const projects = [
+export const projectArr = [
     {
         id: 1,
         name: 'Trip to space'
