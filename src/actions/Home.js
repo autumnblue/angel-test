@@ -2,7 +2,8 @@ import {
     FETCH_USER_DATA,
     SELECTED_USER_INFORMATION,
     SAVE_PROJECT,
-    REMOVE_PROJECT
+    REMOVE_PROJECT,
+    USER_SETTING
 } from '../constants/actionType'
 
 export function fetchUser (userData) {
@@ -35,5 +36,12 @@ export function removeProject (role, projectOrder, projectId) {
         role,
         projectOrder,
         projectId
+    }
+}
+
+export function userSetting (data) {
+    return {
+        type: USER_SETTING,
+        data
     }
 }

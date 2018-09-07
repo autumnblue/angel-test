@@ -3,12 +3,16 @@ import {
     FETCH_USER_DATA,
     SELECTED_USER_INFORMATION,
     SAVE_PROJECT,
-    REMOVE_PROJECT
+    REMOVE_PROJECT,
+    PENDING,
+    USER_SETTING_SUCCESS,
+    USER_SETTING_FAILED
 } from '../../constants/actionType';
 
 import {projectArr} from '../../constants/staticData'
 
 const initialState = {
+    pending: false,
     userOriginData: [],
     userData: [],
     userId: null,
@@ -45,6 +49,18 @@ const reducer = (state = initialState, action) => {
         case REMOVE_PROJECT:
             newState.wholeProjects[action.projectOrder].checked = false;
             newState.wholeProjects[action.projectOrder].role = action.role;
+            return newState;
+
+        case PENDING:
+            newState.pending = true;
+            return newState;
+
+        case USER_SETTING_SUCCESS:
+            newState.pending = false;
+            return newState;
+
+        case USER_SETTING_FAILED:
+            newState.pending = false;
             return newState;
 
         default:
